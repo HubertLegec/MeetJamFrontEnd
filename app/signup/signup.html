@@ -1,0 +1,23 @@
+<p>This is the partial for signup.</p>
+<div class="row">
+    <div class="col-md-4"></div>
+    <form name="signUpForm" class="form col-md-4 center-block" ng-controller="SignUpCtrl as signUpCtrl"
+                                        ng-submit="signUpForm.$valid && signUpCtrl.signUp()" novalidate>
+        <div class="form-group">
+            <input name="username" ng-model="signUpCtrl.username" type="text" class="form-control input-lg" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+            <input name="email" ng-model="signUpCtrl.email" type="email" class="form-control input-lg" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input name="password" ng-model="signUpCtrl.password" type="password" class="form-control input-lg" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign up"/>
+        </div>
+
+        <div>The form is {{signUpForm.$valid}}</div>
+        <div>Name preview: {{signUpCtrl.username}}</div>
+    </form>
+    <div class="col-md-4"></div>
+</div>
