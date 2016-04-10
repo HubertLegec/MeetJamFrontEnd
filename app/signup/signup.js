@@ -1,7 +1,3 @@
-/**
- * Created by Marcin on 2016-04-03.
- */
-
 'use strict';
 
 angular.module('myApp.signup', ['ngRoute'])
