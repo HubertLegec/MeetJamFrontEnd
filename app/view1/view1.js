@@ -1,14 +1,12 @@
-'use strict';
+(function () {
+    'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+    angular
+        .module('myApp')
+        .controller('View1Controller', View1Controller);
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
-  });
-}])
+    function View1Controller() {
+        var vm = this;
+    }
 
-.controller('View1Ctrl', [function() {
-
-}]);
+})();

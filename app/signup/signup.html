@@ -1,7 +1,7 @@
 <p>This is the partial for signup.</p>
 <div class="row">
     <div class="col-md-4"></div>
-    <form name="signUpForm" class="form col-md-4 center-block" ng-controller="SignUpCtrl as signUpCtrl"
+    <form name="signUpForm" class="form col-md-4 center-block" ng-controller="SignUpController as signUpCtrl"
                                         ng-submit="signUpForm.$valid && signUpCtrl.signUp()" novalidate>
         <div class="form-group">
             <input name="username" ng-model="signUpCtrl.username" type="text" class="form-control input-lg" placeholder="Username" required>

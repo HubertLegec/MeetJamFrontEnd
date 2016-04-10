@@ -1,15 +1,12 @@
+(function () {
+    'use strict';
 
-'use strict';
+    angular
+        .module('myApp')
+        .controller('LoginController', LoginController);
 
-angular.module('myApp.login', ['ngRoute'])
+    function LoginController() {
+        var vm = this;
+    }
 
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/login', {
-            templateUrl: 'login/login.html',
-            controller: 'LoginCtrl'
-        });
-    }])
-
-    .controller('LoginCtrl', [function() {
-
-    }]);
+})();

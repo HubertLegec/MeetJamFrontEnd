@@ -1,18 +1,12 @@
-'use strict';
+(function () {
+    'use strict';
 
-angular.module('myApp.signup', ['ngRoute'])
+    angular
+        .module('myApp')
+        .controller('SignUpController', SignUpController);
 
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/signup', {
-            templateUrl: 'signup/signup.html',
-            controller: 'SignUpCtrl'
-        });
-    }])
+    function SignUpController() {
+        var vm = this;
+    }
 
-    .controller('SignUpCtrl', [function() {
-        
-        this.signUp = function () {
-            
-        };
-        
-    }]);
+})();
