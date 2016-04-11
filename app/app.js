@@ -15,7 +15,7 @@
                 controller: 'LoginController'
             })
             .when('/signup', {
-                templateUrl: 'signup/signup.html',
+                templateUrl: 'account/signup/signup.html',
                 controller: 'SignUpController'
             })
             .when('/view1', {
