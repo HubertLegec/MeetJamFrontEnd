@@ -5,15 +5,22 @@
                                         ng-submit="signUpForm.$valid && signUpCtrl.signUp()" novalidate>
         <div class="form-group">
             <input name="username" ng-model="signUpCtrl.username" type="text" class="form-control input-lg" placeholder="Username" required>
+            <div class="text-danger" ng-show="signUpCtrl.errorUserExists"> User with given login already exists! </div>
         </div>
         <div class="form-group">
             <input name="email" ng-model="signUpCtrl.email" type="email" class="form-control input-lg" placeholder="Email" required>
+            <div class="text-danger" ng-show="signUpCtrl.errorInvalidEmail"> Invalid email! </div>
         </div>
         <div class="form-group">
             <input name="password" ng-model="signUpCtrl.password" type="password" class="form-control input-lg" placeholder="Password" required>
+            <div class="text-danger" ng-show="signUpCtrl.errorInvalidPassword"> Password don't match requirements! </div>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign up"/>
+        </div>
+
+        <div class="alert alert-success" ng-show="signUpCtrl.success">
+            <strong>Account created!</strong> Now you can <a href="#/login">sign in</a>.
         </div>
 
         <div>The form is {{signUpForm.$valid}}</div>
