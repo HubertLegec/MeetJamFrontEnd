@@ -26,6 +26,10 @@
                 templateUrl: 'view2/view2.html',
                 controller: 'View2Controller'
             })
+            .when('/account/signup/signup-success', {
+                templateUrl: 'account/signup/signup-success.html',
+                controller: 'View2Controller'
+            })
             .otherwise({redirectTo: '/'});
     });
 

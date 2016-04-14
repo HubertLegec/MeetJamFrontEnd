@@ -9,10 +9,3 @@
     background-color: #2f2f2f; /* Black Gray */
     color: #fff;
 }
-.ng-invalid.ng-dirty{
-    border-color: red;
-}
-
-.ng-valid.ng-dirty{
-    border-color: lawngreen;
-}
