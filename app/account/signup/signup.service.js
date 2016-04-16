@@ -13,7 +13,7 @@
                 url: API_LOCAL + '/api/account/register',
                 method: "POST",
                 params: {login: username, email: email, password: password}
-            })
+            });
         }
     }
 })();

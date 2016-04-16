@@ -1,0 +1,18 @@
+<nav class="navbar navbar-inverse" ng-controller="NavbarController as navbarCtrl">
+    <div class="container-fluid" ng-switch="navbarCtrl.isLoggedIn">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/home">MeetJam</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#/view1">Page 1</a></li>
+            <li><a href="#/view2">Page 2</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-switch-when="false">
+            <li><a href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-switch-when="true">
+            <li ng-click="navbarCtrl.logout()"><a href="#/"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>

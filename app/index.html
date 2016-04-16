@@ -4,61 +4,53 @@
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>MeetJam</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="app.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MeetJam</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- In production use:
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
 </head>
 
-<body ng-controller="AppController">
-<header>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#/home">MeetJam</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="#/view1">Page 1</a></li>
-                <li><a href="#/view2">Page 2</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<body ng-controller="AppController as appCtrl">
+    <header>
+        <ng-include src="'navbar/navbar.html'"></ng-include>
+    </header>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-  <div ng-view></div>
+    <div ng-view></div>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>ount/regis
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.controller.js"></script>
-  <script src="view2/view2.controller.js"></script>
-  <script src ="home/home.controller.js"></script>
-  <script src="login/login.controller.js"></script>
-  <script src="account/signup/signup.controller.js"></script>
-  <script src="account/signup/signup.service.js"></script>
-  <script src="app.constants.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="navbar/navbar.controller.js"></script>
+    <script src="view1/view1.controller.js"></script>
+    <script src="view2/view2.controller.js"></script>
+    <script src ="home/home.controller.js"></script>
+    <script src="account/login/login.controller.js"></script>
+    <script src="account/signup/signup.controller.js"></script>
+    <script src="account/signup/signup.service.js"></script>
+    <script src="auth/auth.service.js"></script>
+    <script src="account/login/login.service.js"></script>
+    <script src="app.constants.js"></script>
+    <script src="app.controller.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
 
-  <!-- Footer -->
-  <footer class="container-fluid bg-2 text-center">
-      <p>MeetJam PIK Project 2016 </p>
-  </footer>
+    <!-- Footer -->
+    <footer class="container-fluid bg-2 text-center">
+        <p>MeetJam PIK Project 2016 </p>
+    </footer>
 </body>
 </html>

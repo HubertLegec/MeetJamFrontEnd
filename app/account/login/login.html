@@ -1,0 +1,24 @@
+<p>This is the partial for login.</p>
+<div class="row">
+    <div class="col-md-4"></div>
+    <form class="form col-md-4 center-block" ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.login()">
+        <!-- ALERTS -->
+        <div class="alert alert-danger" ng-show="loginCtrl.errorLogin">
+            <strong>Invalid username or password.</strong>
+        </div>
+        <!-- USERNAME -->
+        <div class="form-group">
+            <input name="username" ng-model="loginCtrl.username" type="text" class="form-control input-lg" placeholder="Username">
+        </div>
+        <!-- PASSWORD -->
+        <div class="form-group">
+            <input name="password" ng-model="loginCtrl.password" type="password" class="form-control input-lg" placeholder="Password">
+        </div>
+        <!-- SUBMIT -->
+        <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block">Sign In</button>
+            <span class="pull-right"><a href="#/signup">Sign up</a></span><span><a href="#/">Need help?</a></span>
+        </div>
+    </form>
+    <div class="col-md-4"></div>
+</div>

@@ -33,6 +33,6 @@
                             vm.errorInvalidPassword = 'ERROR';
                     }
                 });
-        }
+        };
     }
 })();

@@ -11,7 +11,7 @@
                 controller: 'HomeController'
             })
             .when('/login', {
-                templateUrl: 'login/login.html',
+                templateUrl: 'account/login/login.html',
                 controller: 'LoginController'
             })
             .when('/signup', {
@@ -32,10 +32,5 @@
             })
             .otherwise({redirectTo: '/'});
     });
-
-    app.controller('AppController', function () {
-        var vm = this;
-    });
-
 })();
 
