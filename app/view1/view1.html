@@ -5,4 +5,8 @@
         <h1>Some title</h1>
         <p>Login status: {{view1Ctrl.isLoggedIn}}</p>
     </div>
+    <div ng-show="view1Ctrl.isLoggedIn">
+        <p>Do the ping, and get the pong! (check console)</p>
+        <button type="button" class="btn btn-info" ng-click="view1Ctrl.ping()">PING</button>
+    </div>
 </div>

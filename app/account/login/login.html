@@ -6,6 +6,9 @@
         <div class="alert alert-danger" ng-show="loginCtrl.errorLogin">
             <strong>Invalid username or password.</strong>
         </div>
+        <div class="alert alert-danger" ng-show="loginCtrl.errorToken">
+            <strong>Ooops! Something went wrong. Please try again.</strong>
+        </div>
         <!-- USERNAME -->
         <div class="form-group">
             <input name="username" ng-model="loginCtrl.username" type="text" class="form-control input-lg" placeholder="Username">
