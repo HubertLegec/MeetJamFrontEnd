@@ -1,0 +1,68 @@
+<div class="container-fluid" ng-controller="EventListController as eventListCtrl">
+    <div class="row">
+        <!-- SEARCH MENU -->
+        <div class="col-lg-2">
+            <!-- DATE FROM -->
+            <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="eventListCtrl.dateFrom" is-open="eventListCtrl.dtOpenStatus.dateFrom" datepicker-options="eventListCtrl.dateOptions" ng-required="true" close-text="Close" placeholder="From"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="eventListCtrl.open('dateFrom')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+            <!-- DATE TO -->
+            <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="eventListCtrl.dateTo" is-open="eventListCtrl.dtOpenStatus.dateTo" datepicker-options="eventListCtrl.dateOptions" ng-required="true" close-text="Close" placeholder="To"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="eventListCtrl.open('dateTo')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+            <!-- CITY -->
+            <div class="form-group">
+                <input name="city" ng-model="eventListCtrl.city" type="text" class="form-control input-lg" placeholder="City">
+            </div>
+            <!-- INSTRUMENTS -->
+            <div class="btn-group btn-block" uib-dropdown auto-close="outsideClick" dropdown-append-to-body>
+                <button type="button" class="btn btn-default btn-block" uib-dropdown-toggle>
+                    Instruments <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to">
+                    <li ng-repeat="instrument in eventListCtrl.instruments" class="checkbox checkbox-list">
+                        <label>
+                            <input type="checkbox" name="selectedInstruments[]" value="{{instrument}}" ng-click="eventListCtrl.toggleSelection(instrument)">
+                            {{ instrument }}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <!-- SEARCH BUTTON -->
+            <div class="btn-group btn-block">
+                <button type="button" class="btn btn-primary btn-block" ng-click="eventListCtrl.search()"><span class="glyphicon glyphicon-search"></span> Search</button>
+            </div>
+        </div>
+        <!-- EVENTS -->
+        <div class="col-lg-8 center-block">
+            <div class="jumbotron">
+                <h1>Events</h1>
+                <p>Find your favourite jam & eat it!</p>
+            </div>
+            <!-- EVENT LIST -->
+            <div ng-repeat="event in eventListCtrl.eventList">
+                <div class="well">
+                    <h2 class="event-title">{{ event.title }}</h2>
+                    <p class="event-content">
+                        <em>{{ event.city }}, {{ event.date.toLocaleDateString() }}, Jam Jedi Master: <strong>{{ event.owner }} </strong></em>
+                    </p>
+                    <span class="event-content"><em> Folks, who want to take part: </em></span>
+                    <span class="event-content" ng-repeat="participant in event.participants"> <strong><em>{{ participant }}</em></strong></span>
+                    <p></p>
+                    <span class="event-content"><em> Instruments they are looking for: </em></span>
+                    <span class="event-content" ng-repeat="instrument in event.instrumentsNeeded"> <strong><em>{{ instrument }}</em></strong></span>
+                </div>
+            </div>
+            <div class="alert alert-info">
+                <strong>But I still... haven't found... what I'm looking for... U2? <a href="#/home">Create</a> your own event!</strong>
+                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-music"></span> Add event</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    var app = angular.module('myApp', ['ngRoute','ngAnimate', 'ui.bootstrap']);
-
+    var app = angular.module('myApp', ['ngRoute','ui.bootstrap']);
+    
     app.config(function($routeProvider) {
         $routeProvider
             .when('/',
@@ -29,6 +29,11 @@
             .when('/account/signup/signup-success', {
                 templateUrl: 'account/signup/signup-success.html',
                 controller: 'View2Controller'
+            })
+            //TODO Add access control, check example at http://bit.ly/1qyedFt
+            .when('/events/event_list', {
+                templateUrl: 'events/event_list/event_list.html',
+                controller: 'EventListController'
             })
             .otherwise({redirectTo: '/'});
     });

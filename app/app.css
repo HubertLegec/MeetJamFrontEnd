@@ -1,11 +1,26 @@
-/* app css stylesheet */
-
 .bg-1 {
-    background-color: #1abc9c; /* Green */
+    background-color: #1abc9c;
     color: #ffffff;
 }
 
 .bg-2 {
-    background-color: #2f2f2f; /* Black Gray */
+    background-color: #222222;
     color: #fff;
+}
+
+.well{
+    background-color: rgb(85, 152, 173);
+}
+
+.event-title {
+    color: white;
+}
+
+.event-content {
+    color: white;
+    font-size: large;
+}
+
+.checkbox-list {
+    margin-left: 5px;
 }
