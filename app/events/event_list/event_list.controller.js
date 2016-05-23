@@ -5,9 +5,9 @@
         .module('myApp')
         .controller('EventListController', EventListController);
 
-    EventListController.$inject = ['AuthService'];
+    EventListController.$inject = ['AuthService', 'EventListService'];
 
-    function EventListController(AuthService) {
+    function EventListController(AuthService, EventListService) {
         var vm = this;
         
         //variables used in query to server
@@ -15,10 +15,21 @@
         vm.dateTo = null;
         vm.city = null;
         vm.selectedInstruments = [];
+        vm.instruments = null;
 
-        //sample instruments, used only to show sth in dropdown list, to be populated by instruments from server
-        vm.instruments = ["Electric Guitar", "Acoustic Guitar", "Bass", "Drums"];
-
+        vm.populateAvailableInstruments = function () {
+            if (vm.instruments === null) {
+                EventListService.availableInstruments()
+                    .then(function successCallback(response) {
+                        vm.instruments = response.data;
+                    }, function errorCallback(response) {
+                        if (response.status === 401) {
+                            vm.instruments = [];    // maybe something better possible
+                        }
+                    });
+                }
+        };
+        
         vm.dtOpenStatus = {
             dateFrom: false,
             dateTo: false
@@ -73,5 +84,6 @@
             console.log(vm.city);
             console.log(vm.selectedInstruments);
         };
+
     }
 })();
