@@ -10,7 +10,7 @@
 
         vm.availableInstruments = function () {
             return $http({
-                url: API_LOCAL + '/api/event/availableInstruments',
+                url: API_LOCAL + '/api/utils/availableInstruments',
                 method: "GET"
             })
         };
