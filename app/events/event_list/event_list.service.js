@@ -14,5 +14,29 @@
                 method: "GET"
             })
         };
+
+        vm.searchEvents = function(dateFrom, dateTo, city, instrument) {
+            var par = { };
+            if(dateFrom !== undefined)
+                par['dateFrom'] = dateFrom;
+            if(dateTo !== undefined)
+                par['dateTo'] = dateTo;
+            if(city !== null && city !== "")
+                par['city'] = city;
+
+            return $http({
+                url: API_LOCAL + '/api/event/list',
+                method: 'GET',
+                params: par
+            })
+        };
+
+        vm.getEventDetails = function(event) {
+            return $http({
+                url: API_LOCAL + '/api/event/details',
+                method: 'GET',
+                params: { 'id': event.id }
+            });
+        }
     }
 })();

@@ -11,9 +11,9 @@
         var vm = this;
         
         //variables used in query to server
-        vm.dateFrom = null;
-        vm.dateTo = null;
-        vm.city = null;
+        vm.dateFrom = undefined;
+        vm.dateTo = undefined;
+        vm.city = undefined;
         vm.selectedInstruments = [];
         vm.instruments = null;
 
@@ -28,6 +28,18 @@
                         }
                     });
                 }
+        };
+        
+        vm.getEventDetails = function(event) {
+            EventListService.getEventDetails(event)
+                .then(function successCallback(response) {
+                    event.description = response.data.description;
+                    event.instrumentsNeeded = response.data.instrumentsNeeded;
+                    event.participants = response.data.participants;
+                    event.detailsLoaded = true;
+                }, function errorCallback(response) {
+                    event.description = 'Error while loading...';
+                });
         };
         
         vm.dtOpenStatus = {
@@ -46,28 +58,6 @@
             vm.dtOpenStatus[datepicker] = true;
         };
 
-        //sample events, used only to check the view, to be populated by events from server after making query
-        vm.eventList = [
-            {
-                id: 0,  //stored in order to get event details from server after clicking on event
-                owner: "Steve",
-                title: "NY Wild Jam Session",
-                city: "New York",
-                date: new Date(),
-                participants: ["Steve", "Jerry"],
-                instrumentsNeeded: ["Bass"]
-            },
-            {
-                id: 1,
-                owner: "John",
-                title: "Summer Jam",
-                city: "Warsaw",
-                date: new Date(),
-                participants: ["John", "Mike"],
-                instrumentsNeeded: ["Drums"]
-            }
-        ];
-
         vm.toggleSelection = function (instrument) {
             var idx = vm.selectedInstruments.indexOf(instrument);
             if (idx > -1) {
@@ -79,10 +69,17 @@
 
         //test version, only printing values after clicking search button
         vm.search = function () {
-            console.log(vm.dateFrom);
-            console.log(vm.dateTo);
-            console.log(vm.city);
-            console.log(vm.selectedInstruments);
+            console.log('dateFrom: ' + vm.dateFrom);
+            console.log('dateTo: ' + vm.dateTo);
+            console.log('city: ' + vm.city);
+            console.log('selectedInstruments: ' + vm.selectedInstruments);
+
+            EventListService.searchEvents(vm.dateFrom, vm.dateTo, vm.city, vm.selectedInstruments)
+                .then(function successCallback(response) {
+                    vm.eventList = response.data;
+                }, function errorCallback(response) {
+                    vm.eventList = [];
+                })
         };
 
     }

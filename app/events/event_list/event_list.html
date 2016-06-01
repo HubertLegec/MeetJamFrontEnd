@@ -50,13 +50,19 @@
                 <div class="well">
                     <h2 class="event-title">{{ event.title }}</h2>
                     <p class="event-content">
-                        <em>{{ event.city }}, {{ event.date.toLocaleDateString() }}, Jam Jedi Master: <strong>{{ event.owner }} </strong></em>
+                        <em>{{ event.city }}, {{ event.date | date }}, Jam Jedi Master: <strong>{{ event.owner }} </strong></em>
                     </p>
-                    <span class="event-content"><em> Folks, who want to take part: </em></span>
-                    <span class="event-content" ng-repeat="participant in event.participants"> <strong><em>{{ participant }}</em></strong></span>
+                    <button type="button" class="btn btn-default" ng-click="eventListCtrl.getEventDetails(event);" ng-hide="event.detailsLoaded">More...</button>
+                    <span class="event-content" ng-show="event.detailsLoaded"><em> Folks, who want to take part: </em></span>
+                    <span class="event-content" ng-repeat="participant in event.participants" ng-show="event.detailsLoaded"> <strong><em>{{ participant }}</em></strong></span>
                     <p></p>
-                    <span class="event-content"><em> Instruments they are looking for: </em></span>
-                    <span class="event-content" ng-repeat="instrument in event.instrumentsNeeded"> <strong><em>{{ instrument }}</em></strong></span>
+                    <span class="event-content" ng-show="event.detailsLoaded"><em> Instruments they are looking for: </em></span>
+                    <span class="event-content" ng-repeat="instrument in event.instrumentsNeeded" ng-show="event.detailsLoaded"> <strong><em>{{ instrument }}</em></strong></span>
+                    <p></p>
+                    <span class="event-content" ng-show="event.detailsLoaded"><em> Short info about this event: </em></span>
+                    <span class="event-content" ng-show="event.detailsLoaded"> <em>{{ event.description }}</em></span>
+
+
                 </div>
             </div>
             <div class="alert alert-info">
