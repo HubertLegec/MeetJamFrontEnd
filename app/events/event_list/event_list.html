@@ -28,7 +28,7 @@
                 <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to">
                     <li ng-repeat="instrument in eventListCtrl.instruments" class="checkbox checkbox-list">
                         <label>
-                            <input type="checkbox" name="selectedInstruments[]" value="{{instrument}}" ng-click="eventListCtrl.toggleSelection(instrument)">
+                            <input type="radio" name="selectedInstruments[]" value="{{instrument}}" ng-click="eventListCtrl.selectInstrument(instrument)" ng-checked="instrument === 'Any';">
                             {{ instrument }}
                         </label>
                     </li>

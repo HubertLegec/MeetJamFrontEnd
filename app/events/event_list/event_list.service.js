@@ -23,6 +23,8 @@
                 par['dateTo'] = dateTo;
             if(city !== null && city !== "")
                 par['city'] = city;
+            if(instrument !== "Any")
+                par['instrument'] = instrument;
 
             return $http({
                 url: API_LOCAL + '/api/event/list',

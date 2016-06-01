@@ -14,7 +14,7 @@
         vm.dateFrom = undefined;
         vm.dateTo = undefined;
         vm.city = undefined;
-        vm.selectedInstruments = [];
+        vm.selectedInstrument = "Any";
         vm.instruments = null;
 
         vm.populateAvailableInstruments = function () {
@@ -22,6 +22,7 @@
                 EventListService.availableInstruments()
                     .then(function successCallback(response) {
                         vm.instruments = response.data;
+                        vm.instruments.unshift("Any");
                     }, function errorCallback(response) {
                         if (response.status === 401) {
                             vm.instruments = [];    // maybe something better possible
@@ -58,6 +59,11 @@
             vm.dtOpenStatus[datepicker] = true;
         };
 
+        vm.selectInstrument = function (instrument)
+        {
+            vm.selectedInstrument = instrument;
+        }
+
         vm.toggleSelection = function (instrument) {
             var idx = vm.selectedInstruments.indexOf(instrument);
             if (idx > -1) {
@@ -67,14 +73,8 @@
             }
         };
 
-        //test version, only printing values after clicking search button
         vm.search = function () {
-            console.log('dateFrom: ' + vm.dateFrom);
-            console.log('dateTo: ' + vm.dateTo);
-            console.log('city: ' + vm.city);
-            console.log('selectedInstruments: ' + vm.selectedInstruments);
-
-            EventListService.searchEvents(vm.dateFrom, vm.dateTo, vm.city, vm.selectedInstruments)
+            EventListService.searchEvents(vm.dateFrom, vm.dateTo, vm.city, vm.selectedInstrument)
                 .then(function successCallback(response) {
                     vm.eventList = response.data;
                 }, function errorCallback(response) {
