@@ -21,6 +21,7 @@
                     var token = response.data ? response.data.token : null;
                     if(token){
                         AuthService.saveToken(token);
+                        AuthService.saveLogin(vm.username);
                         $rootScope.$broadcast('AuthenticationLogin');
                         $location.path('/');
                     } else {

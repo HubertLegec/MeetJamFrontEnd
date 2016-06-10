@@ -24,12 +24,21 @@
 
         vm.logout = function() {
             $window.localStorage.removeItem('jwtToken');
+            $window.localStorage.removeItem('login');
             $rootScope.$broadcast('AuthenticationLogout');
         };
 
         vm.isAuth = function () {
             var token = vm.getToken();
             return token ? true : false;
+        };
+        
+        vm.saveLogin = function (login) {
+            $window.localStorage.setItem('login',login);
+        };
+        
+        vm.getLogin = function () {
+            return $window.localStorage.getItem('login');
         };
     }
 })();
