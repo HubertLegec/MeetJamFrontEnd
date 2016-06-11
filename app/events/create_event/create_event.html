@@ -1,0 +1,63 @@
+<div class="container" ng-controller="CreateEventController as createCtrl">
+    <div class="jumbotron">
+        <h1>Create event</h1>
+        <p>Add your own very special jam!</p>
+    </div>
+    <div class="row col-lg">
+        <div class="col-lg-3 col-lg-offset-2 alert alert-info" ng-show="createCtrl.successfullyCreated === null">
+            <p><strong>Specify details of your brand new event.</strong><p>
+            <p><strong><em>Title</em>, <em>City</em> and <em>Date</em> are required.</strong></p>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2 alert alert-success" ng-show="createCtrl.successfullyCreated === true">
+            <p><strong>Event created successfully!</strong></p>
+            <p>&nbsp;</p>
+            <p><button type="button" class="btn btn-primary" ng-click="createCtrl.reset()"><span class="glyphicon glyphicon-music"></span> Add another event</button><p>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2 alert alert-danger" ng-show="createCtrl.successfullyCreated === false">
+            <p><strong>Sorry, an error occurred during the processing of your request.</strong><p>
+        </div>
+        <form name="createForm" class="col-lg-5" novalidate ng-show="createCtrl.successfullyCreated === null">
+            <!-- TITLE -->
+            <div class="form-group">
+                <input name="title" ng-model="createCtrl.title" type="text" class="form-control input-lg required" placeholder="Title" required>
+            </div>
+            <!-- CITY -->
+            <div class="form-group">
+                <input name="city" ng-model="createCtrl.city" type="text" class="form-control input-lg required" placeholder="City" required>
+            </div>
+            <!-- DATE -->
+            <p class="input-group">
+                <input type="text" class="form-control input-lg required" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="createCtrl.date" is-open="createCtrl.dtOpenStatus.date" datepicker-options="createCtrl.dateOptions" close-text="Close" placeholder="Date" required />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-lg" ng-click="createCtrl.open('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </p>
+            <!-- DESCRIPTION -->
+            <div class="form-group">
+                <textarea name="description" ng-model="createCtrl.description" type="text" class="form-control input-lg" placeholder="Description"></textarea>
+            </div>
+
+            <!-- INSTRUMENTS -->
+            <div class="btn-group btn-block" uib-dropdown auto-close="outsideClick" dropdown-append-to-body>
+                <button type="button" class="btn btn-default btn-block" uib-dropdown-toggle ng-click="createCtrl.populateAvailableInstruments()">
+                    Necessary instruments <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to">
+                    <li ng-repeat="instrument in createCtrl.instruments" class="checkbox checkbox-list">
+                        <label>
+                            <input type="checkbox" name="selectedInstruments[]" value="{{instrument}}" ng-click="createCtrl.toggleSelection(instrument)">
+                            {{ instrument }}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <p>&nbsp;</p>
+            <!-- CREATE EVENT BUTTON -->
+            <div>
+                <p>
+                    <button class="btn btn-primary" ng-disabled="createForm.$invalid || createCtrl.canSend === false" ng-click="createCtrl.createEvent()"><span class="glyphicon glyphicon-plus"></span>&nbsp;Create event</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

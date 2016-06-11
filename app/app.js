@@ -35,6 +35,10 @@
                 templateUrl: 'events/event_list/event_list.html',
                 controller: 'EventListController'
             })
+            .when('/events/create_event', {
+                templateUrl: 'events/create_event/create_event.html',
+                controller: 'CreateEventController'
+            })
             .otherwise({redirectTo: '/'});
     });
 })();

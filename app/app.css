@@ -24,3 +24,11 @@
 .checkbox-list {
     margin-left: 5px;
 }
+
+.ng-invalid.required {
+    border-color: #FA787E;
+}
+
+.ng-valid.required {
+    border-color: #78FA89;
+}
