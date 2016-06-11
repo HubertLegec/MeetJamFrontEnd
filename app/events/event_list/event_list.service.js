@@ -39,6 +39,22 @@
                 method: 'GET',
                 params: { 'id': event.id }
             });
-        }
+        };
+        
+        vm.joinEvent = function(event) {
+            return $http({
+                url: API_LOCAL + '/api/event/join',
+                method: 'GET',
+                params: { 'id': event.id },
+                transformResponse: [function() {}]
+            });
+        };
+
+        vm.getEventsUserPending = function(event) {
+            return $http({
+                url: API_LOCAL + '/api/event/eventsUserPending',
+                method: 'GET'
+            });
+        };
     }
 })();

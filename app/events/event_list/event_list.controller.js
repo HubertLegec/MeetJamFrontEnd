@@ -16,6 +16,7 @@
         vm.city = undefined;
         vm.selectedInstrument = "Any";
         vm.instruments = null;
+        vm.eventsUserPending = [];
 
         vm.populateAvailableInstruments = function () {
             if (vm.instruments === null) {
@@ -62,7 +63,7 @@
         vm.selectInstrument = function (instrument)
         {
             vm.selectedInstrument = instrument;
-        }
+        };
 
         vm.toggleSelection = function (instrument) {
             var idx = vm.selectedInstruments.indexOf(instrument);
@@ -82,5 +83,35 @@
                 })
         };
 
+        vm.joinEvent = function(event) {
+            EventListService.joinEvent(event)
+                .then(function successCallback(response) {
+                    vm.updateEventsUserPending();
+            }, function errorCallback(response) {
+                console.log(response);
+            })
+        };
+        
+        vm.takingPart = function(event) {
+            return event.participants.indexOf(AuthService.getLogin()) > -1;
+        };
+        
+        vm.pending = function(event) {
+            return vm.eventsUserPending.indexOf(event.id) > -1;
+        };
+
+        vm.updateEventsUserPending = function() {
+            EventListService.getEventsUserPending()
+                .then(function successCallback(response) {
+                    vm.eventsUserPending = response.data;
+                }, function errorCallback(response) {
+                    vm.eventsUserPending = [];
+                });
+        };
+        vm.updateEventsUserPending();
+
+        vm.host = function(event) {
+            return event.owner === AuthService.getLogin();
+        };
     }
 })();
