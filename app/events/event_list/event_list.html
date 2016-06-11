@@ -61,13 +61,15 @@
                     <p></p>
                     <span class="event-content" ng-show="event.detailsLoaded"><em> Short info about this event: </em></span>
                     <span class="event-content" ng-show="event.detailsLoaded"> <em>{{ event.description }}</em></span>
-
-
+                    <p></p>
+                    <p ng-show="event.detailsLoaded && eventListCtrl.takingPart(event)"><span class="glyphicon glyphicon-play"></span>&nbsp;I AM TAKING PART</p>
+                    <p ng-show="event.detailsLoaded && eventListCtrl.pending(event)"><span class="glyphicon glyphicon-play"></span>&nbsp;PENDING APPROVAL</p>
+                    <button type="button" class="btn btn-primary" ng-click="eventListCtrl.joinEvent(event)" ng-show="event.detailsLoaded && !eventListCtrl.host(event) && !eventListCtrl.takingPart(event) && !eventListCtrl.pending(event)"><span class="glyphicon glyphicon-play"></span>&nbsp;JOIN</button>
                 </div>
             </div>
             <div class="alert alert-info">
-                <strong>But I still... haven't found... what I'm looking for... U2? <a href="#/home">Create</a> your own event!</strong>
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-music"></span> Add event</button>
+                <strong>But I still... haven't found... what I'm looking for... U2? Create your own event!</strong>
+                <a href="#events/create_event" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-music"></span>&nbsp;Create event</a>
             </div>
         </div>
     </div>
